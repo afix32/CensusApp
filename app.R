@@ -4,7 +4,6 @@ library(shiny)
 source("helpers.R")
 counties <- readRDS("data/counties.rds")
 
-# User interface ----
 ui <- fluidPage(
   titlePanel("censusVis"),
   
@@ -28,15 +27,12 @@ ui <- fluidPage(
   )
 )
 
-# Server logic ----
 server <- function(input, output) {
   output$map <- renderPlot({
     percent_map( # some arguments )
   })
 }
 
-
-# User interface ----
 ui <- fluidPage(
   titlePanel("censusVis"),
   
@@ -60,7 +56,7 @@ ui <- fluidPage(
   )
 )
 
-# Server logic ----
+
 server <- function(input, output) {
   output$map <- renderPlot({
     data <- switch(input$var, 
@@ -85,5 +81,4 @@ server <- function(input, output) {
   })
 }
 
-# Run app ----
 shinyApp(ui, server)
